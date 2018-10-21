@@ -1,10 +1,13 @@
-#Download base image - centos latest
-FROM centos:latest
+FROM alpine:latest
 
-RUN yum update -y
-RUN yum install -y install epel-release
-RUN yum install -y ntpd
-RUN chkconfig ntpd on
-RUN service ntpd start
+# install openntp
+RUN apk add --no-cache openntpd
 
-EXPOSE 123 22
+# use custom ntpd config file
+COPY assets/ntpd.conf /etc/ntpd.conf
+
+# ntp port
+EXPOSE 123/udp
+
+# start ntpd in the foreground
+ENTRYPOINT [ "/usr/sbin/ntpd", "-v", "-d", "-s" ]
