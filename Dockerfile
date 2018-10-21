@@ -9,7 +9,5 @@ COPY assets/ntpd.conf /etc/ntpd.conf
 # ntp port
 EXPOSE 123/udp
 
-RUN rc-service ntpd start
-
 # start ntpd in the foreground
-# ENTRYPOINT [ "/usr/sbin/ntpd", "-v", "-d", "-s" ]
+ENTRYPOINT [ "/usr/sbin/ntpd" ]
