@@ -4,7 +4,7 @@
 # of these to be appropriate for your environment.
 #
 
-IMAGE_NAME="rhambacher/ntp"
+IMAGE_NAME="ntp"
 CONTAINER_NAME="ntp"
 
 # any additional docker run options you may want.
