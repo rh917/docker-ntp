@@ -9,7 +9,6 @@ rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
 rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
 rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;
-VOLUME [ "/sys/fs/cgroup" ]
 CMD ["/usr/sbin/init"]
 
 # install ntp
@@ -22,5 +21,4 @@ COPY assets/ntpd.conf /etc/ntpd.conf
 EXPOSE 123/udp
 
 # start ntpd in the foreground
-# ENTRYPOINT [ "/usr/sbin/ntpd" ]
-ENTRYPOINT ["/usr/sbin/ntpd"] & CMD ["-D", "FOREGROUND"] 
+ENTRYPOINT /usr/sbin/ntpd && watch ntpq -p
