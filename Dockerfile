@@ -10,4 +10,5 @@ COPY assets/ntpd.conf /etc/ntpd.conf
 EXPOSE 123/udp
 
 # start ntpd in the foreground
-ENTRYPOINT [ "/usr/sbin/ntpd" ]
+# ENTRYPOINT [ "/usr/sbin/ntpd" ]
+ENTRYPOINT ["/usr/sbin/ntpd"] & CMD ["-D", "FOREGROUND"] 
