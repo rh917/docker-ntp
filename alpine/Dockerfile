@@ -1,7 +1,7 @@
-FROM centos:latest
+FROM alpine:latest
 
-# install ntp
-RUN yum install -y ntp
+# install openntp
+RUN apk add --no-cache openntpd
 
 # use custom ntpd config file
 COPY assets/ntpd.conf /etc/ntpd.conf
@@ -10,4 +10,4 @@ COPY assets/ntpd.conf /etc/ntpd.conf
 EXPOSE 123/udp
 
 # start ntpd in the foreground
-ENTRYPOINT [ "/usr/sbin/ntpd" ]
+ENTRYPOINT [ "/usr/sbin/ntpd", "-v", "-d", "-s" ]
