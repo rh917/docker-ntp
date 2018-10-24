@@ -17,6 +17,7 @@ RUN yum install -y ntp
 # use custom ntpd config file
 COPY assets/ntpd.conf /etc/ntpd.conf
 COPY assets/entrypoint.sh /tmp/entrypoint.sh
+CMD ["chmod 777 /tmp/entrypoint.sh"]
 
 # ntp port
 EXPOSE 123/udp
