@@ -21,4 +21,4 @@ COPY assets/ntpd.conf /etc/ntpd.conf
 EXPOSE 123/udp
 
 # start ntpd in the foreground
-ENTRYPOINT /usr/sbin/ntpd && watch ntpq -p
+ENTRYPOINT [ "/usr/sbin/ntpd && watch ntpq -p " ]
