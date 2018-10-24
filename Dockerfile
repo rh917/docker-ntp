@@ -16,9 +16,10 @@ RUN yum install -y ntp
 
 # use custom ntpd config file
 COPY assets/ntpd.conf /etc/ntpd.conf
+COPY assets/entrypoiny.sh /tmp/entrypoint.sh
 
 # ntp port
 EXPOSE 123/udp
 
 # start ntpd in the foreground
-ENTRYPOINT [ "/usr/sbin/ntpd && watch ntpq -p " ]
+ENTRYPOINT ["/tmp/entrypoint.sh"]
