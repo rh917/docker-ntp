@@ -1,0 +1,4 @@
+docker tag ntp us.gcr.io/hees-k8s1/ntp:cent && \
+	docker push us.gcr.io/hees-k8s1/ntp:cent && \
+	docker tag ntp rhambacher/ntp:latest && \
+	docker push rhambacher/ntp:latest
