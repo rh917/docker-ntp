@@ -1,14 +1,5 @@
-FROM centos:latest
+FROM ubuntu:14.04.5
+RUN apt-get update \
+  && apt-get install -y chrony
 
-# install ntp
-RUN yum install -y ntp
-
-# use custom ntpd config file
-COPY assets/ntpd.conf /etc/ntpd.conf
-CMD ["/usr/sbin/ntpd"]
-
-# ntp port
-EXPOSE 123/udp
-
-# start ntpd in the foreground
-ENTRYPOINT ["ntpq", "-p"]
+ENTRYPOINT ["chronyd", "-d", "-f", "/etc/chrony/chrony.conf"]
