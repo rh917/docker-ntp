@@ -11,4 +11,4 @@ CMD ["/usr/sbin/ntpd"]
 EXPOSE 123/udp
 
 # start ntpd in the foreground
-ENTRYPOINT ["ntpq", "-p"]
+ENTRYPOINT ["/usr/sbin/ntpq", "-p"]
